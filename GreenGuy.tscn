@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Sprites/Player/player_e_2.png" type="Texture" id=1]
+[ext_resource path="res://GreenGuy.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Player/player_w_1.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/player_w_2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/player_e_1.png" type="Texture" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 19.0985
+height = 14.0692
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "MoveRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "MoveLeft",
+"speed": 5.0
+} ]
+
+[node name="GreenGuy" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.34132, -0.899586 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 0.00784314, 1, 0, 1 )
+frames = SubResource( 2 )
+animation = "MoveRight"
+frame = 1
+playing = true
